@@ -7,23 +7,33 @@ FILENAME = "subject_data.txt"
 
 
 def main():
-    data = load_data()
-    print(data)
+    """Load subject data from file and display it."""
+    subjects = load_data()  # Load data as a list of lists
+    display_subject_details(subjects)  # Display the subject details neatly
 
 
 def load_data():
-    """Read data from file formatted like: subject,lecturer,number of students."""
-    input_file = open(FILENAME)
-    for line in input_file:
-        print(line)  # See what a line looks like
-        print(repr(line))  # See what a line really looks like
-        line = line.strip()  # Remove the \n
-        parts = line.split(',')  # Separate the data into its parts
-        print(parts)  # See what the parts look like (notice the integer is a string)
-        parts[2] = int(parts[2])  # Make the number an integer (ignore PyCharm's warning)
-        print(parts)  # See if that worked
-        print("----------")
-    input_file.close()
+    """Read data from the file and return a nested list of subject details."""
+    subjects = []
+    with open(FILENAME, 'r') as input_file:
+        for line in input_file:
+            line = line.strip()  # Remove any trailing whitespace or newlines
+            parts = line.split(',')  # Split the line into code, lecturer, students
+            parts[2] = int(parts[2])  # Convert student count to integer
+            subjects.append(parts)  # Store each subject's data as a list
+    return subjects  # Return the nested list
+
+
+def display_subject_details(subjects):
+    """Display the subject details in the required format."""
+    for subject in subjects:
+        code, lecturer, student_count = subject  # Unpack the subject details
+        print(f"{code} is taught by {lecturer} and has {student_count} students")
+
+
+if __name__ == "__main__":
+    main()
+
 
 
 main()
