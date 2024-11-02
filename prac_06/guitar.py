@@ -1,0 +1,14 @@
+"""Guitar class to store details about a guitar.
+Estimated time: 1 hour
+Start time: 20.50
+End time:
+"""
+
+class Guitar:
+    """Represent a guitar with name, year of manufacture, and cost."""
+
+    def __init__(self, name="", year=0, cost=0):
+        """Initialize a Guitar instance with name, year, and cost."""
+        self.name = name
+        self.year = year
+        self.cost = cost
