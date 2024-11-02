@@ -6,13 +6,12 @@ This is why we name our folders with no spaces or capitals, as valid module name
 
 from prac_06.car import Car
 
-
 def main():
-    """Demo test code to show how to use car class."""
-    my_car = Car(180)
+    """Demo test code to show how to use the Car class."""
+    # Initial car object (my_car) for demo
+    my_car = Car("My Car", 180)  # Added name parameter
     my_car.drive(30)
-    print(f"Car has fuel: {my_car.fuel}")
-    print(my_car)
-
+    print(f"{my_car.name} has fuel: {my_car.fuel}")
+    print(my_car)  # This will use the __str__ method
 
 main()
