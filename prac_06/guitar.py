@@ -1,7 +1,7 @@
 """Guitar class to store details about a guitar.
 Estimated time: 1 hour
 Start time: 20.50
-End time:
+End time:22.30
 """
 
 class Guitar:
