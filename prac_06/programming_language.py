@@ -1,7 +1,7 @@
 """Programming Language class for storing details about programming languages.
-Estimated time:
+Estimated time: 1 hour
 Start time: 19:40
-End time:
+End time: 20.52
 """
 
 class ProgrammingLanguage:

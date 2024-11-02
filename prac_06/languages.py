@@ -1,7 +1,7 @@
 """Client code to test the ProgrammingLanguage class.
 Estimated time: 1 hour
 Start time: 19:40
-End time:
+End time: 20.52
 """
 
 from programming_language import ProgrammingLanguage
