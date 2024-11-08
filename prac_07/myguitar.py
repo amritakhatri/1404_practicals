@@ -12,3 +12,9 @@ def load_guitars(filename):
     except FileNotFoundError:
         print("File not found.")
     return guitars
+
+# Define the display_guitars function
+def display_guitars(guitars):
+    """Display a list of guitars."""
+    for guitar in guitars:
+        print(guitar)
