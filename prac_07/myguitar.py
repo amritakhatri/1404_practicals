@@ -23,3 +23,11 @@ def display_guitars(guitars):
 def sort_guitars(guitars):
     """Sort the guitars list by the year of manufacture (oldest to newest)."""
     guitars.sort()
+
+# Define the get_new_guitar function
+def get_new_guitar():
+    """Prompt the user to enter details of a new guitar and return a Guitar object."""
+    name = input("Enter the guitar name: ")
+    year = int(input("Enter the year of manufacture: "))
+    cost = float(input("Enter the cost of the guitar: "))
+    return Guitar(name, year, cost)
