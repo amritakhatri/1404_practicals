@@ -18,3 +18,8 @@ def display_guitars(guitars):
     """Display a list of guitars."""
     for guitar in guitars:
         print(guitar)
+
+# Define the sort_guitars function
+def sort_guitars(guitars):
+    """Sort the guitars list by the year of manufacture (oldest to newest)."""
+    guitars.sort()
