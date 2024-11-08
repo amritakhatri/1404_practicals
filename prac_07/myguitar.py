@@ -31,3 +31,12 @@ def get_new_guitar():
     year = int(input("Enter the year of manufacture: "))
     cost = float(input("Enter the cost of the guitar: "))
     return Guitar(name, year, cost)
+
+# Define the save_guitars function
+def save_guitars(filename, guitars):
+    """Save the list of guitars to the CSV file."""
+    with open(filename, 'w') as file:
+        for guitar in guitars:
+            file.write(f"{guitar.name},{guitar.year},{guitar.cost}\n")
+
+
