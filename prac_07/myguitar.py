@@ -1,6 +1,19 @@
 #Import the Guitar class and define the load_guitars function
 from guitar import Guitar
 
+def main():
+    """Main function to manage guitar input, display, and save to CSV."""
+    guitars = load_guitars("guitars.csv")
+    display_guitars(guitars)
+
+    guitars.sort()  # Sort the guitars by year
+    print("\nGuitars sorted by year:")
+    display_guitars(guitars)
+
+    add_new_guitars(guitars)
+    save_guitars("guitars.csv", guitars)
+
+
 def load_guitars(filename):
     """Load guitars from a CSV file and return a list of Guitar objects."""
     guitars = []
@@ -40,3 +53,5 @@ def save_guitars(filename, guitars):
             file.write(f"{guitar.name},{guitar.year},{guitar.cost}\n")
 
 
+if __name__ == "__main__":
+    main()
