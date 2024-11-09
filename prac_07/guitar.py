@@ -1,8 +1,11 @@
 """Guitar class to store details about a guitar.
 Estimated time: 1 hour
 Start time: 20.50
-End time:22.30
+End time: 22.30
 """
+
+# Constant for vintage age
+VINTAGE_AGE = 50
 
 class Guitar:
     """Represent a guitar with name, year of manufacture, and cost."""
@@ -25,4 +28,10 @@ class Guitar:
 
     def is_vintage(self):
         """Return True if the guitar is 50 or more years old, False otherwise."""
-        return self.get_age() >= 50
+        return self.get_age() >= VINTAGE_AGE
+
+    def __lt__(self, other):
+        """Compare guitars by year of manufacture."""
+        if isinstance(other, Guitar):
+            return self.year < other.year
+        return False
