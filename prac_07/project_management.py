@@ -103,11 +103,34 @@ def add_new_project(projects):
     projects.append(new_project)
     print("Project added successfully.")
 
+def update_project(projects):
+    """Update an existing project's details."""
+    name = input("Enter the project name to update: ")
+    project_to_update = None
+    for project in projects:
+        if project.name.lower() == name.lower():
+            project_to_update = project
+            break
 
+    if project_to_update:
+        new_name = input(f"Enter new name (or press Enter to keep '{project_to_update.name}'): ") or project_to_update.name
+        new_start_date_input = input(f"Enter new start date (or press Enter to keep '{project_to_update.start_date.strftime('%d/%m/%Y')}'): ") or project_to_update.start_date.strftime('%d/%m/%Y')
+        new_start_date = datetime.strptime(new_start_date_input, "%d/%m/%Y")
+        new_priority = input(f"Enter new priority (or press Enter to keep '{project_to_update.priority}'): ")
+        new_priority = int(new_priority) if new_priority else project_to_update.priority
+        new_estimate = input(f"Enter new estimate (or press Enter to keep '{project_to_update.estimate}'): ")
+        new_estimate = float(new_estimate) if new_estimate else project_to_update.estimate
+        new_completion = input(f"Enter new completion percentage (or press Enter to keep '{project_to_update.completion}'): ")
+        new_completion = int(new_completion) if new_completion else project_to_update.completion
 
-
-
+        project_to_update.name = new_name
+        project_to_update.start_date = new_start_date
+        project_to_update.priority = new_priority
+        project_to_update.estimate = new_estimate
+        project_to_update.completion = new_completion
+        print("Project updated successfully.")
+    else:
+        print("Project not found.")
 
 if __name__ == "__main__":
     main()
-
