@@ -90,6 +90,18 @@ def filter_projects_by_date(projects):
         print(project)
 
 
+def add_new_project(projects):
+    """Add a new project to the list."""
+    name = input("Enter project name: ")
+    start_date_input = input("Enter project start date (dd/mm/yyyy): ")
+    start_date = datetime.strptime(start_date_input, "%d/%m/%Y")
+    priority = int(input("Enter project priority: "))
+    estimate = float(input("Enter project cost estimate: "))
+    completion = int(input("Enter project completion percentage: "))
+
+    new_project = Project(name, start_date, priority, estimate, completion)
+    projects.append(new_project)
+    print("Project added successfully.")
 
 
 
