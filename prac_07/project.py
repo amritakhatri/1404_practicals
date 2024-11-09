@@ -19,4 +19,7 @@ class Project:
         """Returns a string representation of a project."""
         return f"{self.name}, start: {self.start_date}, priority {self.priority}, estimate: ${self.estimate}, completion: {self.completion}%"
 
+    def get_priority(self):
+        """Returns the priority of the project."""
+        return self.priority
 
