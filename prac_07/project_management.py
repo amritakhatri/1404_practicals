@@ -45,6 +45,27 @@ def display_menu():
     print("- (U)pdate project")
     print("- (Q)uit")
 
+def load_projects(filename):
+    """Load projects from a file."""
+    projects = []
+    with open(filename, 'r') as file:
+        next(file)  # Skip header line
+        for line in file:
+            parts = line.strip().split('\t')
+            name, start_date, priority, cost_estimate, completion = parts
+            project = Project(name, datetime.strptime(start_date, "%d/%m/%Y"), int(priority), float(cost_estimate), int(completion))
+            projects.append(project)
+    print(f"Loaded {len(projects)} projects from {filename}")
+    return projects
+
+
+
+
+
+
+
+
+
 if __name__ == "__main__":
     main()
 
