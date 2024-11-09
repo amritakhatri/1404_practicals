@@ -66,7 +66,18 @@ def save_projects(filename, projects):
             file.write(f"{project.name}\t{project.start_date.strftime('%d/%m/%Y')}\t{project.priority}\t{project.cost_estimate}\t{project.completion}\n")
     print(f"Saved {len(projects)} projects to {filename}")
 
+def display_projects(projects):
+    """Display incomplete and completed projects."""
+    incomplete_projects = [p for p in projects if p.completion < 100]
+    completed_projects = [p for p in projects if p.completion == 100]
 
+    print("Incomplete projects:")
+    for project in sorted(incomplete_projects, key=Project.get_priority):
+        print(project)
+
+    print("Completed projects:")
+    for project in sorted(completed_projects, key=Project.get_priority):
+        print(project)
 
 
 
