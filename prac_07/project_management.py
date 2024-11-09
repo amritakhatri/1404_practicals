@@ -1,0 +1,50 @@
+"""
+project_management.py
+Time Estimate: 90 minutes
+This module handles the main functionality of the Project Management Program.
+"""
+
+from project import Project
+from datetime import datetime
+
+DEFAULT_FILE = 'projects.txt'
+def main():
+    """Main function to run the Project Management Program."""
+    print("Welcome to Pythonic Project Management")
+    projects = load_projects(DEFAULT_FILE)
+    choice = ''
+    while choice != 'Q':
+        display_menu()
+        choice = input("Choose an option: ").upper()
+        if choice == 'L':
+            filename = input("Enter filename to load: ") or DEFAULT_FILE
+            projects = load_projects(filename)
+        elif choice == 'S':
+            filename = input("Enter filename to save to: ") or DEFAULT_FILE
+            save_projects(filename, projects)
+        elif choice == 'D':
+            display_projects(projects)
+        elif choice == 'F':
+            filter_projects_by_date(projects)
+        elif choice == 'A':
+            add_new_project(projects)
+        elif choice == 'U':
+            update_project(projects)
+        elif choice == 'Q':
+            print("Thank you for using the Project Management Program.")
+        else:
+            print("Invalid choice. Please try again.")
+
+def display_menu():
+    """Displays the main menu options."""
+    print("- (L)oad projects")
+    print("- (S)ave projects")
+    print("- (D)isplay projects")
+    print("- (F)ilter projects by date")
+    print("- (A)dd new project")
+    print("- (U)pdate project")
+    print("- (Q)uit")
+
+if __name__ == "__main__":
+    main()
+
