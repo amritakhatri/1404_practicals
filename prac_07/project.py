@@ -1,3 +1,8 @@
+"""
+Module: project.py
+Time Estimate: 20 minutes
+This module defines the Project class for the Project Management Program.
+"""
 
 class Project:
     """A class to represent a project with relevant attributes."""
