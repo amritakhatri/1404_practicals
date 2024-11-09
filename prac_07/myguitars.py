@@ -10,7 +10,8 @@ def main():
     print("\nGuitars sorted by year:")
     display_guitars(guitars)
 
-    add_new_guitars(guitars)
+    new_guitar = get_new_guitar()  # Get new guitar details from user
+    guitars.append(new_guitar)  # Add the new guitar to the list
     save_guitars("guitars.csv", guitars)
 
 
