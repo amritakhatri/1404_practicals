@@ -1,12 +1,23 @@
 from kivy.app import App
-from kivy.lang import Builder
+from kivy.uix.boxlayout import BoxLayout
 
 
-class BoxLayoutDemo(App):
+class BoxLayoutDemoApp(App):
+    """Main application for BoxLayout Demo."""
+
     def build(self):
-        self.title = "Box Layout Demo"
-        self.root = Builder.load_file('box_layout.kv')
-        return self.root
+        return BoxLayout()
+
+    def handle_greet(self):
+        """Handles the greeting event."""
+        input_name = self.root.ids.input_name.text
+        self.root.ids.output_label.text = f"Hello, {input_name}!"
+
+    def handle_clear(self):
+        """Clears the input and output fields."""
+        self.root.ids.input_name.text = ""
+        self.root.ids.output_label.text = ""
 
 
-BoxLayoutDemo().run()
+if __name__ == '__main__':
+    BoxLayoutDemoApp().run()
