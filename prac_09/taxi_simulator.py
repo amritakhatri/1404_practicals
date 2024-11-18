@@ -83,3 +83,11 @@ def get_distance():
     except ValueError:
         print("Invalid input, defaulting to 0")
         return 0
+
+        elif option == "d":
+        total_bill = drive_taxi(current_taxi, total_bill)
+
+    print(f"Total trip cost: ${total_bill:.2f}")
+    print("Taxis are now:")
+    display_taxis(taxis)
+
