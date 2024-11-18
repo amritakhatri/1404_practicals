@@ -38,3 +38,8 @@ def main():
     print(f"Total trip cost: ${total_bill:.2f}")
     print("Taxis are now:")
     # Placeholder for displaying taxis
+
+def display_taxis(taxis):
+    """Display the list of taxis."""
+    for i, taxi in enumerate(taxis):
+        print(f"{i} - {taxi}")
