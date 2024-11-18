@@ -21,3 +21,20 @@ def main():
     current_taxi = None
     total_bill = 0.0
     print(">>> ", end="")
+
+    option = input().lower()
+    while option != "q":
+        if option == "c":
+            print("Choose a taxi:")
+        elif option == "d":
+            print("Drive the taxi:")
+        else:
+            print("Invalid option")
+        print(f"Bill to date: ${total_bill:.2f}")
+        print(MENU)
+        print(">>> ", end="")
+        option = input().lower()
+
+    print(f"Total trip cost: ${total_bill:.2f}")
+    print("Taxis are now:")
+    # Placeholder for displaying taxis
