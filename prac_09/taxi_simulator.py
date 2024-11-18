@@ -43,3 +43,22 @@ def display_taxis(taxis):
     """Display the list of taxis."""
     for i, taxi in enumerate(taxis):
         print(f"{i} - {taxi}")
+
+    print("Choose a taxi:")
+    display_taxis(taxis)
+
+def choose_taxi(taxis):
+    """Display available taxis and let the user choose one."""
+    try:
+        taxi_choice = int(input("Choose taxi: "))
+        if 0 <= taxi_choice < len(taxis):
+            return taxis[taxi_choice]
+        else:
+            print("Invalid taxi choice")
+    except ValueError:
+        print("Invalid input")
+    return None
+
+
+if option == "c":
+    current_taxi = choose_taxi(taxis)
