@@ -59,6 +59,27 @@ def choose_taxi(taxis):
         print("Invalid input")
     return None
 
+    if option == "c":
+        current_taxi = choose_taxi(taxis)
 
-if option == "c":
-    current_taxi = choose_taxi(taxis)
+def drive_taxi(current_taxi, total_bill):
+    """Drive the chosen taxi and calculate the trip cost."""
+    if current_taxi:
+        distance = get_distance()
+        current_taxi.start_fare()
+        distance_driven = current_taxi.drive(distance)
+        trip_cost = current_taxi.get_fare()
+        print(f"Your {current_taxi.name} trip cost you ${trip_cost:.2f}")
+        return total_bill + trip_cost
+    else:
+        print("You need to choose a taxi before you can drive")
+        return total_bill
+
+
+def get_distance():
+    """Prompt the user to enter a distance to drive."""
+    try:
+        return abs(float(input("Drive how far? ")))
+    except ValueError:
+        print("Invalid input, defaulting to 0")
+        return 0
