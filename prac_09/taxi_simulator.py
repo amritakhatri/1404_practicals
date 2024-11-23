@@ -1,6 +1,6 @@
 # taxi_simulator.py
 """
-CP1404/CP5632 Practical - Taxi Simulator
+CP1404- Taxi Simulator
 This program simulates a taxi service where the user can choose a taxi,
 drive it, and see the cost of each trip.
 
