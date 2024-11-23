@@ -1,3 +1,8 @@
+"""
+SilverServiceTaxi class for CP1404.
+This class extends the Taxi class to include a fanciness multiplier and a flagfall.
+"""
+
 from taxi import Taxi
 
 class SilverServiceTaxi(Taxi):
