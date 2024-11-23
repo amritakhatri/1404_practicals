@@ -24,3 +24,6 @@ def test_silver_service_taxi():
     # Assert to verify correctness
     assert abs(actual_fare - expected_fare) < 0.01, f"Expected ${expected_fare}, but got ${actual_fare}"
     print("SilverServiceTaxi test passed!")
+
+if __name__ == "__main__":
+    test_silver_service_taxi()
