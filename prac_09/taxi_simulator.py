@@ -19,6 +19,37 @@ FLAGFALL = 4.50
 SILVER_SERVICE_FARE = 2.46
 LUXURY_FARE = 4.92
 
+
+
+def main():
+    """Main function to run the taxi simulator."""
+    # Create taxi objects
+    taxis = [
+        Taxi("Prius", 100),
+        SilverServiceTaxi("Limo", 100, 2),
+        SilverServiceTaxi("Hummer", 200, 4)
+    ]
+
+    current_taxi = None
+    bill = 0.00
+
+    # Main menu loop
+    while True:
+        print(f"Bill to date: ${bill:.2f}")
+        option = input("q)uit, c)hoose taxi, d)rive: ").lower()
+
+        if option == 'q':
+            print(f"Total trip cost: ${bill:.2f}")
+            print("Taxis are now:")
+            show_taxis(taxis)
+            break
+        elif option == 'c':
+            current_taxi = choose_taxi(taxis)
+        elif option == 'd':
+            bill = drive_taxi(current_taxi, bill)
+        else:
+            print("Invalid option")
+
 # Function to display the available taxis and their details
 def show_taxis(taxis):
     """Display the available taxis."""
