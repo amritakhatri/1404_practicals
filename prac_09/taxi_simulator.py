@@ -26,5 +26,19 @@ def show_taxis(taxis):
     for i, taxi in enumerate(taxis):
         print(f"{i} - {taxi}")
 
+# Function to process the user's trip choice
+def choose_taxi(taxis):
+    """Prompt the user to choose a taxi from the list."""
+    show_taxis(taxis)
+    try:
+        choice = int(input("Choose taxi: "))
+        if 0 <= choice < len(taxis):
+            return taxis[choice]
+        else:
+            print("Invalid taxi choice")
+            return None
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+        return None
 
 
