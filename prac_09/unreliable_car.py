@@ -22,3 +22,16 @@ class UnreliableCar(Car):
         super().__init__(name, fuel)
         self.reliability = reliability
 
+    def drive(self, distance):
+        """
+        Attempt to drive the car a given distance, based on its reliability.
+
+        Args:
+            distance (int): The distance to attempt to drive.
+
+        Returns:
+            int: The actual distance driven.
+        """
+        if random.uniform(0, 100) < self.reliability:
+            return super().drive(distance)
+        return 0
