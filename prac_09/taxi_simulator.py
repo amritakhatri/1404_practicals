@@ -19,4 +19,12 @@ FLAGFALL = 4.50
 SILVER_SERVICE_FARE = 2.46
 LUXURY_FARE = 4.92
 
+# Function to display the available taxis and their details
+def show_taxis(taxis):
+    """Display the available taxis."""
+    print("Taxis available:")
+    for i, taxi in enumerate(taxis):
+        print(f"{i} - {taxi}")
+
+
 
