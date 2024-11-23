@@ -101,3 +101,7 @@ def drive_taxi(current_taxi, bill):
         except ValueError:
             print("Invalid distance. Please enter a valid number.")
     return bill
+
+if __name__ == "__main__":
+    # Start the taxi simulator
+    main()
