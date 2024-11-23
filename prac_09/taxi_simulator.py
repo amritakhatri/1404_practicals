@@ -41,4 +41,18 @@ def choose_taxi(taxis):
         print("Invalid input. Please enter a number.")
         return None
 
+# Function to drive the taxi and calculate the trip cost
+def drive_taxi(current_taxi, bill):
+    """Drive the current taxi and calculate the cost."""
+    if current_taxi is None:
+        print("You need to choose a taxi before you can drive.")
+    else:
+        try:
+            distance = float(input("Drive how far? "))
+            cost = current_taxi.drive(distance)
+            bill += cost
+            print(f"Your {current_taxi.name} trip cost you ${cost:.2f}")
+        except ValueError:
+            print("Invalid distance. Please enter a valid number.")
+    return bill
 
