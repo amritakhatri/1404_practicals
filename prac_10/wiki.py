@@ -44,3 +44,6 @@ def fetch_wikipedia_page(title):
         return f"An error occurred: {str(e)}", None, None
 
 
+if __name__ == "__main__":
+    main()
+
