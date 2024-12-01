@@ -1,41 +1,37 @@
-""" wiki.py - A program to search for Wikipedia pages and display their details."""
+# wiki.py
 
-
+from flask import Flask, render_template, request
 import wikipedia
 
-def main():
-    """Main function to prompt user for input and display Wikipedia page details."""
-    title = input("Enter page title: ").strip()
+app = Flask(__name__)
 
-    while title:  # Replace while True with a condition based on user input
-        title_result, summary_result, url_result = fetch_wikipedia_page(title)
+@app.route('/')
+def home():
+    return render_template('home.html')
 
-        if summary_result:
-            print(f"{title_result}\n{summary_result}\n{url_result}\n")
-        else:
-            print(title_result)
+@app.route('/search', methods=['POST', 'GET'])
+def search():
+    if request.method == 'POST':
+        query = request.form['query']
+        try:
+            # Attempt to fetch the Wikipedia page and pass title and summary to the template
+            page = wikipedia.page(query)
+            return render_template('results.html', title=page.title, summary=page.summary)
+        except wikipedia.exceptions.DisambiguationError as e:
+            # Handle disambiguation error
+            return render_template('error.html', message="Disambiguation error: Please be more specific with your search.")
+        except wikipedia.exceptions.HTTPTimeoutError:
+            # Handle request timeout error
+            return render_template('error.html', message="Request Timeout: The request to Wikipedia took too long.")
+        except wikipedia.exceptions.PageError:
+            # Handle page not found error
+            return render_template('error.html', message="Page not found: No Wikipedia page matching your search.")
+    return render_template('search.html')
 
-        # Prompt again for the next title
-        title = input("Enter page title: ").strip()
+@app.route('/about')
+def about():
+    # Simple about page template
+    return render_template('about.html')
 
-    print("Thank you.")
-
-def fetch_wikipedia_page(title):
-    """Fetch and return the title, summary, and URL of the Wikipedia page."""
-    try:
-        # Attempt to get the page based on the title
-        page = wikipedia.page(title)
-        return page.title, page.summary, page.url
-    except DisambiguationError as e:
-        # Handle disambiguation errors
-        return f"We need a more specific title. Try one of the following: {', '.join(e.options)}", None, None
-    except PageError:
-        # Handle page errors (page not found)
-        return f"Page id \"{title}\" does not match any pages. Try another id!", None, None
-    except Exception as e:
-        # Handle other general errors
-        return f"An error occurred: {str(e)}", None, None
-
-
-if __name__ == "__main__":
-    main()
+if __name__ == '__main__':
+    app.run(debug=True)
