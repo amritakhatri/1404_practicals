@@ -1,37 +1,30 @@
 """ wiki.py - A program to search for Wikipedia pages and display their details."""
 
-import wikipedia
-from wikipedia.exceptions import DisambiguationError, PageError
 
+import wikipedia
 
 def main():
-    """Main program loop that prompts for user input and displays the result."""
-    print("Welcome to the Wikipedia Page Search Program!")
+    """Main function to prompt user for input and display Wikipedia page details."""
+    title = input("Enter page title: ").strip()
 
-    while True:
-        # Prompt the user for input
+    while title:  # Replace while True with a condition based on user input
+        title_result, summary_result, url_result = fetch_wikipedia_page(title)
+
+        if summary_result:
+            print(f"{title_result}\n{summary_result}\n{url_result}\n")
+        else:
+            print(title_result)
+
+        # Prompt again for the next title
         title = input("Enter page title: ").strip()
 
-        # Exit the loop if the input is blank
-        if not title:
-            print("Thank you.")
-            break
-
-        # Fetch the page information
-        result_title, summary, url = fetch_wikipedia_page(title)
-
-        # Display the results or errors
-        if summary:
-            print(f"\n{result_title}\n{summary}\n{url}\n")
-        else:
-            print(result_title)  # Display the error message
-
+    print("Thank you.")
 
 def fetch_wikipedia_page(title):
     """Fetch and return the title, summary, and URL of the Wikipedia page."""
     try:
         # Attempt to get the page based on the title
-        page = wikipedia.page(title, autosuggest=False)
+        page = wikipedia.page(title)
         return page.title, page.summary, page.url
     except DisambiguationError as e:
         # Handle disambiguation errors
@@ -46,4 +39,3 @@ def fetch_wikipedia_page(title):
 
 if __name__ == "__main__":
     main()
-
