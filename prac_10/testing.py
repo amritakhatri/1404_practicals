@@ -24,6 +24,17 @@ def is_long_word(word, length=5):
     """
     return len(word) > length
 
+def format_sentence(phrase):
+    """
+    Format a phrase as a sentence.
+    >>> format_sentence('hello')
+    'Hello.'
+    >>> format_sentence('It is an ex parrot.')
+    'It is an ex parrot.'
+    >>> format_sentence('this is a test')
+    'This is a test.'
+    """
+    return phrase.capitalize().rstrip('.') + '.'
 
 def run_tests():
     """Run the tests on the functions."""
