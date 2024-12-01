@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welcome to the Wikipedia Search App!</h1>
+    <form action="{{ url_for('search') }}" method="POST">
+        <label for="query">Enter a topic to search:</label>
+        <input type="text" name="query" id="query" required>
+        <button type="submit">Search</button>
+    </form>
+    <a href="{{ url_for('about') }}">About</a>
+</body>
+</html>
